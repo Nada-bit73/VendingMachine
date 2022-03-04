@@ -1,30 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vendingmachine;
 
 /**
  *
- * @author Amcِ
+ * @Nada
  */
 public class Item {
-  //name, price and quantity
+  
     private String name;
     private double price;
     private int quantity;
     
     public Item(String name,double price,int quantity){
-        this.name = name;
+        if(name == null || name.isEmpty()){
+            throw new IllegalArgumentException("name cannot be null/blank.");
+        }
+        if(price < 0){
+             throw new IllegalArgumentException("price cannot be less than zero.");
+         }
+        if(quantity < 0){
+            throw new IllegalArgumentException("quantity cannot be less than zero.");
+        }
+        else{
+            this.name = name;
         this.price = price;
         this.quantity = quantity;
+        }
+        
     }
     
      public Item(Item source){
+        
         this.name = source.name;
         this.price = source.price;
         this.quantity = source.quantity;
+        
+        
+         
+        
     }
     
  public String getName(){
@@ -40,19 +53,38 @@ public class Item {
     }
  
  public void setName(String name){
-     this.name = name;
+     if(name == null || name.isEmpty()){
+            throw new IllegalArgumentException("name cannot be null/blank.");
+        }
+     else{
+         this.name = name;
+     }
+     
+     
  }
  
  public void setPrice(double price){
-     this.price = price;
+     if(price < 0){
+             throw new IllegalArgumentException("price cannot be less than zero.");
+         }
+     else{
+         this.price = price;
+     }
+     
  }
  
  public void setQuantity(int quantity){
-     this.quantity = quantity;
+      if(quantity < 0){
+            throw new IllegalArgumentException("quantity cannot be less than zero.");
+        }
+      else{
+            this.quantity = quantity;
+
+      }
  }
  
  public String toString(){
-     //<name>: <price> (<quantity>)
+    
      
      return this.name +" : "+this.price+"("+this.quantity+") ";
  }
