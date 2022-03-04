@@ -1,31 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vendingmachine;
 
 import java.util.Arrays;
 
 /**
  *
- * @author Amcِ
+ * @Nada
  */
 public class Machine {
    private Item[][] items;
    
    
-   /*
-   It receives one parameter: Item[][] items.
-
-It uses a nested loop to copy every object from the parameter into the field.
-   */
+   
    
    public Machine(Item[][] items){
        this.items = new Item[items.length][items[0].length];//first set the length
        
        for(int i = 0 ; i < items.length ; i++){
+           
            for(int j = 0 ; j < items[i].length ; j++){
+               
            this.items[i][j] = new Item(items[i][j]);
            
        }
@@ -43,14 +37,18 @@ It returns an object at the requested spot inside a row.
        return  new Item(this.items[row][spot]);
    }
    
-   /*
-   t receives three parameters: Item item, int row, int spot.
-
-It sets an element equal to a copy of the object being passed in.
-   */
+  
    
    public void setItems(Item item,int row, int spot){
        this.items[row][spot] = new Item(item);
+   }
+   
+   public int getLength(){
+       return this.items.length;
+   }
+   
+    public int getRowLength(){
+       return this.items[0].length;
    }
    /**
      * Function name -- dispense
@@ -68,8 +66,10 @@ It sets an element equal to a copy of the object being passed in.
        if(this.items[row][spot].getQuantity() > 0){
            this.items[row][spot].setQuantity(this.items[row][spot].getQuantity() - 1) ;
            return true;
-       }
+       }else{
            return false;
+       }
+           
        
    }
    
